@@ -6,7 +6,7 @@ import { Eye, EyeOff, Mail, Lock, Sparkles, User } from "lucide-react";
 import { BackgroundDecoration } from "@/components/BackgroundDecoration"
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
-import api from "@/api/axios";
+import { api } from "@/api/axios";
 
 
 

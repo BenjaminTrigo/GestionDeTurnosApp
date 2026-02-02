@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 // import { Checkbox } from "@/components/ui/checkbox";
 import { Eye, EyeOff, Mail, Lock, Sparkles } from "lucide-react";
-import  api  from "../api/axios";
+import  { api }  from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { BackgroundDecoration } from "@/components/BackgroundDecoration";
+import { DashboardPage } from "./DashboardPage";
 
 export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,21 +17,20 @@ export const LoginForm = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (event:React.FormEvent) => {
-    event.preventDefault();
-    setIsLoading(true);
-    // Simulate login
-    setIsLoading(false);
-
+    
     try {
-      const response = await api.post('/login', { email, password });
+      const response = await api.post('/auth/login', { email, password });
       localStorage.setItem('token', response.data.token);
       alert('¡Bienvenido!');
-      navigate('/dashboard');
     } catch (error) {
       alert('Error al iniciar sesión');
     }
+    // event.preventDefault();
+    // setIsLoading(true);
+    // // Simulate login
+    // setIsLoading(false);
   };
-
+  
   return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4 relative">
         <div className="text-left mb-8">
